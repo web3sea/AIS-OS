@@ -21,7 +21,7 @@ Seeded Sep 21, 2026. **Verified by live read-only calls Sep 21, 2026.** Twelve t
 | | | LinkedIn, X, podcast | not yet connected | — | — |
 | 5 | Project / task tracking | **Linear** (destination), **Jira / Atlassian** (legacy) | `mcp` | verified | 2026-09-21 |
 | 6 | Meeting intelligence | **Granola**, **Fireflies**, **Wispr Flow**, **Read.ai** | `mcp` | verified | 2026-09-21 |
-| | | Zoom (a router source; API docs captured, client not built) | specified, not yet implemented | — | — |
+| | | Zoom (an endpoint exists on the live pipeline; no inbound traffic observed) | `script`, unverified | — | — |
 | | | Microsoft Teams recordings | not yet connected | — | — |
 | 7 | Knowledge / files | **Dropbox** (source of truth), **Google Drive**, **Notion** (single-member workspace, no teamspaces) | `mcp` | verified | 2026-09-21 |
 | | | **GitHub** (spec + plan docs) | `script` (`gh` CLI, account `web3sea`) | verified | 2026-09-21 |
@@ -81,11 +81,13 @@ An `mcp` row means *a live session can reach it*. It says nothing about whether 
 |---|---|---|
 | 1 Revenue | n/a for this AIOS — product revenue plumbing lives on the product side | Stripe, for ad-hoc reads from a session |
 | 2 Customers | Slack outbound webhook (alerts only) | **Gmail**, Slack reads |
-| 3 Calendar | Google service account with delegated subject (the router service) | Google Calendar via MCP |
+| 3 Calendar | Google service account with delegated subject (in the dormant router, see below) | Google Calendar via MCP |
 | 4 Communication | Slack outbound webhook | Apollo |
 | 5 Tasks | **Jira** (the internal CLI repo ships a Jira client) | **Linear** |
-| 6 Meetings | **Fireflies** only (GraphQL + HMAC webhooks) in the meeting-transcript router service. Granola and Zoom are specified and their API docs captured, but no client or job handler is built | Granola, Zoom, Wispr Flow, Read.ai |
-| 7 Files | **Google Drive** (service account), **GitHub** (`gh`, plus app/token auth in the router) | **Dropbox**, Notion |
+| 6 Meetings | **Fireflies, Granola and Read.ai** all deliver to the live transcript pipeline by signed webhook, verified from its request logs (Granola and Read.ai as recently as 2026-09-20, Fireflies 2026-09-16). It files to Dropbox and notifies Slack | Wispr Flow; Zoom has an endpoint but no observed traffic |
+| 7 Files | **Dropbox** is the live write destination for meeting transcripts (path-addressed, set by an env var). **Google Drive** (service account) and **GitHub** (`gh`, plus token auth) | Notion |
+
+**Two transcript pipelines exist, and only one is running.** The live one is a private fork that receives Fireflies, Granola and Read.ai webhooks and files to **Dropbox** by path. The original router, which files to **Google Drive** by folder ID and carries the domain-wide-delegation design, has received **zero** requests: its logs are empty. Treat Dropbox as the real destination for transcripts, and anything describing Drive folder IDs as the legacy design until the dormant service is retired or revived. Both run their own Postgres.
 
 **Use the conventions that exist. Do not invent new ones.**
 
