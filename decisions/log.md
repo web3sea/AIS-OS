@@ -73,3 +73,19 @@ Keep it terse. Future-you will thank present-you for capturing the *why*, not ju
 **Decision (Priority 2):** "Reliably delivers the end-to-end product lifecycle workflow" now means: agents autonomously clear all nine stages, intake -> discovery -> intent -> plan -> build -> qa -> uat -> feedback -> prod, without intervention, while documenting every task and updating the client in the client dashboard, with the "Rabbit" agent conversing with the client, returning feedback, and fixing and deploying against it on demand.
 
 **Why:** The priority previously had a deliverable and no bar, so December could not judge it. Stages cleared without intervention, out of nine, is countable. The three conditions (documentation, client visibility, Rabbit's feedback loop) prevent a hollow pass where stages complete but nobody outside the system can see or steer it.
+
+## 2026-09-21 - The client Microsoft 365 tenant stays disconnected
+
+**Decision:** Do not authenticate the client's Microsoft 365 tenant. Teams, the Outlook calendar and that mailbox are out of reach for this AIOS by choice. This is a standing position, not a backlog item, and future sessions should not offer to wire it. Xero is being connected; M365 is not.
+
+**Why:** Privacy and security. A single client added Brad to their tenant, so that mailbox and calendar hold their data, not his. Authenticating it would put a client's correspondence within reach of every session running in this runtime, for the sake of convenience on one account. The exposure is continuous while the benefit is occasional. What would change this: the client asking for it, a genuine delivery need that cannot be met another way, or a scoped credential limited to specific shared calendars rather than tenant-wide access.
+
+**Alternatives considered:** Connecting it and relying on care at the point of use, which makes every future session a place where that judgment has to hold. Connecting it temporarily for a specific task, which is defensible but needs a revocation step nobody currently owns.
+
+## 2026-09-21 - Stripe durability belongs to the products, not to this AIOS
+
+**Decision:** This AIOS does not build its own Stripe plumbing. Product revenue is already connected on the product side, and the Priority 1 count of paying AIOS Coffee users comes from there. The Stripe MCP row in `connections.md` is for ad-hoc reads from a session and nothing more.
+
+**Why:** The first audit flagged Stripe as the only path to measuring Priority 1 and recorded having no committed script for it as a gap. That was the wrong frame. Product revenue plumbing is product work with its own paying users and its own connections; duplicating a read path here would be a second source of truth for a number the products already own. Recording it as "not a gap" rather than deleting the row means a later audit will not rediscover it and file the same finding again. What would change this: the agency needing a revenue view that spans Stripe, Wise and Upwork, which is a different problem from counting product users and is still unsolved.
+
+**Alternatives considered:** Building a committed Stripe read in the internal CLI pattern, which solves a problem nobody has until products launch. Leaving the gap on the books, which would have kept generating the same audit finding every run.
