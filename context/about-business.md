@@ -48,13 +48,13 @@ Two shapes, run concurrently rather than as alternatives:
 
 - **Retainers** - monthly, ongoing. Band roughly $2k to $5.6k per month.
 - **Projects** - fixed scope, fixed fee. Band roughly $1.6k to $8k. Entry
-  point is $1,500 for a basic automation.
+  point is $1,500 for a basic automation. Duration tracks scope: minimum 2
+  weeks, average 8 weeks.
 
 As of Sep 2026: 2 retainers and 5 active projects.
 
 Exact per-engagement amounts and client names are deliberately kept out of this
 repo, which is public. That detail lives in Dropbox under Products/AIOS.
 
-Still open: what pushes a deal toward retainer versus project, typical project
-duration, whether post-delivery maintenance is included or billed separately,
-and who signs.
+Still open: what pushes a deal toward retainer versus project, whether
+post-delivery maintenance is included or billed separately, and who signs.

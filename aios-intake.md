@@ -42,6 +42,8 @@ As of Sep 2026: 2 retainers and 5 active projects running concurrently.
 Retainer band roughly $2k to $5.6k per month. Project band roughly $1.6k to
 $8k. Entry point is $1,500 for a basic automation.
 
+Duration depends on scope: minimum 2 weeks, average 8 weeks.
+
 Exact per-engagement figures are deliberately not recorded here: this repo is
 public. Detail belongs in Dropbox under Products/AIOS.
 ```
