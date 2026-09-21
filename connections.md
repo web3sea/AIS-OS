@@ -23,7 +23,7 @@ Seeded Sep 21, 2026. **Verified by live read-only calls Sep 21, 2026.** Twelve t
 | 6 | Meeting intelligence | **Granola**, **Fireflies**, **Wispr Flow**, **Read.ai** | `mcp` | verified | 2026-09-21 |
 | | | Zoom (a router source; API docs captured, client not built) | specified, not yet implemented | — | — |
 | | | Microsoft Teams recordings | not yet connected | — | — |
-| 7 | Knowledge / files | **Dropbox** (source of truth), **Google Drive**, **Notion** (team wiki) | `mcp` | verified | 2026-09-21 |
+| 7 | Knowledge / files | **Dropbox** (source of truth), **Google Drive**, **Notion** (single-member workspace, no teamspaces) | `mcp` | verified | 2026-09-21 |
 | | | **GitHub** (spec + plan docs) | `script` (`gh` CLI, account `web3sea`) | verified | 2026-09-21 |
 
 **Mechanism options:** `mcp` (MCP server), `script` (Python/Bash hitting an API, in `scripts/`), `export` (CSV/JSON dump pipeline), `key+ref` (`.env` key + `references/{tool}-api.md` guide), `server available, not authenticated` (the connector exists in this runtime but the account is not linked), `not yet connected`.
@@ -48,7 +48,7 @@ One safe read-only call per tool. Reuse these as the verification probe; none of
 | Read.ai | list folders | Auto-folder set; most recent item activity 2026-09-20 |
 | Dropbox | list `/Products/AIOS` | 5 expected folders, newest modified 2026-09-21 |
 | Google Drive | list recent files | Recent documents across owned and shared files |
-| Notion | list recent pages | Wiki content reachable: product pages, the PR review playbook, the executive priorities database. **Do not probe with "list teamspaces"** — this workspace has none, so that call returns empty and looks like a dead connection |
+| Notion | list recent pages | Content reachable: product pages, the PR review playbook, the executive priorities database. **Never probe with "list teamspaces"** — teamspaces do not exist on this plan (confirmed 2026-09-21; Personal / Personal Pro are single-member and have no teamspaces), so that call returns empty and reads as a dead connection |
 | GitHub | `gh api user` | Account `web3sea`; token scopes `repo`, `workflow`, `admin:org`, `gist` |
 
 ## Freshness and failure handling
@@ -56,7 +56,7 @@ One safe read-only call per tool. Reuse these as the verification probe; none of
 - **Expected interval: 30 days** for a connection to count as verified, except where the data itself is volatile. Calendar, tasks and meeting sources are worth a fresh read at point of use rather than trusting a date in this table.
 - **A row past its interval is stale, not broken.** Re-run that tool's probe from the table above and update Last checked. Do not silently serve an older answer as current.
 - **On an auth failure, say so.** If a probe fails, report the failure and which domain went dark. Never substitute cached or remembered data for a source that did not answer, and never mark a row verified on the strength of a configured server alone.
-- **A probe can fail for reasons that have nothing to do with the connection.** Notion was the live example: "list teamspaces" returned empty and looked dead, but the workspace simply has no teamspaces and every page was reachable all along. Before recording a domain as unreachable, check that the probe suits how that account is actually shaped.
+- **A probe can fail for reasons that have nothing to do with the connection.** Notion was the live example: "list teamspaces" returned empty and looked dead, but the plan has no teamspaces feature at all and every page was reachable the whole time. Before recording a domain as unreachable, check that the probe suits how that account is actually shaped.
 
 ## Permissions and boundaries
 

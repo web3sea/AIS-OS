@@ -94,8 +94,8 @@ registry, access routes, freshness rules and permission boundaries in
   read Jira only for what has not migrated.
 - **Meetings:** **Granola**, **Fireflies**, **Wispr Flow**, **Read.ai**. Teams
   recordings unwired.
-- **Files:** **Dropbox** (source of truth), **Google Drive**, **Notion** (team
-  wiki), **GitHub** (via `gh` CLI, not MCP).
+- **Files:** **Dropbox** (source of truth), **Google Drive**, **Notion** (single-member
+  workspace, no teamspaces), **GitHub** (via `gh` CLI, not MCP).
 
 These live in the operator's runtime config, not in this repo: a fresh clone
 elsewhere has none of them. Run `/audit` to re-check coverage and freshness.
