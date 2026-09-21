@@ -21,14 +21,9 @@ Signals.
 
 ## AIOS CDP
 
-The data connector layer. Not a product, not sold separately. It does one job:
-connect the user's sources. IQ sits directly on it, and Coffee and Signals read
-from IQ.
-
-    CDP (data connectors) -> IQ (confirmed knowledge) -> Coffee, Signals
-
-Each user connects one source per domain, whichever tool they already use.
-Line: "One connection, every product."
+Shared infrastructure, not sold separately and not a fourth product. The single
+connection layer all three products run on: "One connection, every product."
+Connect once, and Coffee, Signals and IQ all read from it.
 
 ## ICP
 

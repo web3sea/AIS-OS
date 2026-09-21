@@ -63,3 +63,13 @@ Keep it terse. Future-you will thank present-you for capturing the *why*, not ju
 **Consequence:** CDP is now a hard dependency of all three launches, not a parallel workstream. If it slips, all three slip together. The riskiest part is normalizing five overlapping meeting sources (Granola, Fireflies, Wispr Flow, Read.ai, Teams recordings) into one, which is a reason to consolidate that domain before building against it.
 
 **Alternatives considered:** Selling CDP as a fourth product, which would have changed the shape of the quarter's launch target. Leaving it undecided, which would have left the three-product framing quietly contradicted by the pricing table.
+
+## 2026-09-21 - CDP scope narrowed to data connectors; Priority 2 gets a bar
+
+**Decision (CDP):** CDP is the data connector layer only. It is not a product and is not sold separately. The stack is CDP (connectors) -> IQ (confirmed knowledge) -> Coffee and Signals (surfaces). IQ sits directly on CDP; the other two products read from IQ rather than from connectors.
+
+**Why:** The earlier entry established CDP was not a fourth product but left its job vague, describing it as the layer "all three products run on". It is narrower than that: connecting sources, nothing else. Knowledge lives in IQ. Keeping that boundary sharp stops connector work and knowledge work from blurring into one component.
+
+**Decision (Priority 2):** "Reliably delivers the end-to-end product lifecycle workflow" now means: agents autonomously clear all nine stages, intake -> discovery -> intent -> plan -> build -> qa -> uat -> feedback -> prod, without intervention, while documenting every task and updating the client in the client dashboard, with the "Rabbit" agent conversing with the client, returning feedback, and fixing and deploying against it on demand.
+
+**Why:** The priority previously had a deliverable and no bar, so December could not judge it. Stages cleared without intervention, out of nine, is countable. The three conditions (documentation, client visibility, Rabbit's feedback loop) prevent a hollow pass where stages complete but nobody outside the system can see or steer it.

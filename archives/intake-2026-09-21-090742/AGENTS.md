@@ -45,8 +45,8 @@ Two revenue lines:
 - **Custom automation solutions** for companies implementing AI: lead generation
   pipelines, content automation, CRM integration, operational AI.
 
-Underneath sits **AIOS CDP**, the data connector layer: not a product and not
-sold separately. IQ sits directly on CDP; Coffee and Signals read from IQ.
+All three products run on **AIOS CDP**, the shared connection layer. It is
+infrastructure, not a fourth product, and it is not sold separately.
 
 This quarter, to Dec 20, 2026:
 

@@ -6,13 +6,29 @@ Quarter running to Dec 20, 2026. Set Sep 21, 2026.
    2026. Coffee is the wedge; adoption is expected to spill over into IQ and
    Signals.
 
-   Dependency: all three products run on AIOS CDP, the shared connection layer.
-   CDP ships first or all three slip together. CDP has to support many meeting
-   connectors, because users arrive on whichever tool they already use. Running
-   Granola, Fireflies, Wispr Flow, Read.ai and Teams recordings personally is
-   deliberate connector testing, not tool sprawl. The gating artifact is the
-   normalized schema every connector maps into, since IQ can only cite what
-   resolves to a common shape.
-2. Stand up an agent team that reliably delivers the end-to-end product
-   lifecycle workflow. Needs a number: which lifecycle stages are in scope, and
-   what bar counts as "reliably".
+   Dependency: CDP ships first or all three slip together. CDP is the data
+   connector layer, IQ sits on CDP, and Coffee and Signals read from IQ, so
+   everything is downstream of connectors landing. CDP has to support many
+   meeting connectors because users arrive on whichever tool they already use,
+   and each user connects one. Running Granola, Fireflies, Wispr Flow and
+   Read.ai personally is deliberate connector testing, not tool sprawl (Teams
+   is out of scope for this release). The gating artifact is the normalized
+   schema every connector maps into, since IQ can only cite what resolves to a
+   common shape.
+2. Stand up an agent team that autonomously delivers the end-to-end product
+   lifecycle workflow.
+
+   Definition of done: agents work through all nine stages without
+   intervention.
+
+       intake -> discovery -> intent -> plan -> build -> qa -> uat ->
+       feedback -> prod
+
+   Three conditions, all required:
+
+   - Every task is documented as it goes.
+   - The client is kept updated along the way in the client dashboard.
+   - The "Rabbit" agent converses with the client, returns their feedback, and
+     fixes and deploys against that feedback on demand.
+
+   Measurable as stages cleared without human intervention, out of nine.
