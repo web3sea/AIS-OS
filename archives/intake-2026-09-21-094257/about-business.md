@@ -64,24 +64,4 @@ repo, which is public. That detail lives in Dropbox under Products/AIOS.
 - Projects are invoiced by milestone. Retainers bill through Upwork, Stripe or
   Wise, depending on the client.
 
-**How a project becomes a retainer**
-
-Retainer and project are not alternatives a client picks between. They are
-sequential, and the project is how the retainer is earned.
-
-The pattern, from the past year:
-
-1. Deliver the project. A completed deliverable earns trust.
-2. The 30 days of included maintenance does the selling. The client watches
-   small bugs get fixed after MVP launch.
-3. They already have more features they want built, so the backlog exists
-   before the conversation does.
-4. Negotiate ownership of the roadmap and maintenance for that deliverable.
-
-Both current retainers came from this path, and in both cases the deliverable
-was a web app. 2 of 2.
-
-Implication: the 30-day maintenance window is not a cost of delivery, it is
-the retainer pitch. Treat it as sales time, not overhead. Web apps convert
-because they keep generating feature demand; a one-off automation with no
-roadmap has less to own.
+Still open: what pushes a deal toward retainer versus project.

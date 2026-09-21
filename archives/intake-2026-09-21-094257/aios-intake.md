@@ -48,12 +48,6 @@ MVP is included, with 30 days free maintenance after delivery.
 The founder signs.
 Projects are invoiced by milestone. Retainers bill via Upwork, Stripe or Wise.
 
-Retainers are not an alternative to projects, they follow from them. A
-completed project earns trust; the 30-day maintenance window shows the client
-small bugs getting fixed post-MVP; they already have more features they want;
-then the roadmap and maintenance of that deliverable get negotiated as a
-retainer. Both current retainers came this way, both web apps.
-
 Exact per-engagement figures are deliberately not recorded here: this repo is
 public. Detail belongs in Dropbox under Products/AIOS.
 ```
