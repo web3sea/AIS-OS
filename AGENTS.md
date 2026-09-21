@@ -31,12 +31,18 @@ Read `references/3ms-framework.md` once. It's how Brad Wilcox thinks about AI wo
 
 **Active client work is not in this repo** (it is public; client detail stays out). To find a client's current state:
 
-1. **Who the client is** — the client registry repo in the agency GitHub org, `clients.yaml`. The canonical registry: client code, business identity, routing keys and Drive destinations. Start here to resolve which client is which.
-2. **Published documentation and deliverables** — Dropbox `/Agency/Client Docs`, one folder per business.
-3. **Meeting transcripts and client comms** — Google Drive `Client Docs/<Business>/`, subfolders `Meeting Transcripts` and `Client Comms`. Written automatically by the meeting-transcript router service; folder IDs are in `clients.yaml`.
-4. **Project code** — GitHub, the client-projects team in the agency org. That team is the authoritative grouping, not a naming convention across the org's repos. Local working copies are checked out per client under the usual code root.
+1. **Who the client is** — the client registry repo in the agency GitHub org, `clients.yaml`. The canonical registry: client code, business identity, routing keys and destinations. Start here to resolve which client is which.
+2. **Final documents and deliverables** — Dropbox `/Agency/Client Docs/<Business>/`.
+3. **Meeting transcripts and client comms** — Dropbox `/Agency/Client Docs/<Business>/Meeting Transcripts/`, filed automatically by the transcript pipeline from Fireflies, Granola and Read.ai.
+4. **Working drafts and anything collaborative** — Google Drive `My Drive/Client Working Files/<Business>/`.
+5. **Project code** — GitHub, the client-projects team in the agency org. That team is the authoritative grouping, not a naming convention across the org's repos. Local working copies are checked out per client under the usual code root.
 
-> **"Client Docs" is ambiguous: two folders of that name exist in two different systems.** Dropbox `/Agency/Client Docs` holds published documentation you wrote. Google Drive `Client Docs/` holds transcripts and comms a service files there. Always say which system you mean.
+> **The filing rule: Dropbox is final, Google Drive is working.**
+> Dropbox holds the polished, static, publishable version of a document, and nothing else. Google Drive holds every working version, and is where collaboration with clients and teammates happens. A document moves to Dropbox when it is done, not before.
+>
+> **Meeting records are always Dropbox.** They are the source of truth, they are not editable, and they are never drafts. Anything filing a transcript into Drive is a bug or a legacy path.
+>
+> Applying this in practice: look in Drive for a draft, in Dropbox for the version that was sent. When writing a document, start it in Drive; publish to Dropbox only on Brad's say-so.
 
 See `EXPANSIONS.md` for what to add as you grow.
 

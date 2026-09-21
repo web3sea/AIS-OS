@@ -23,7 +23,7 @@ Seeded Sep 21, 2026. **Verified by live read-only calls Sep 21, 2026.** Twelve t
 | 6 | Meeting intelligence | **Granola**, **Fireflies**, **Wispr Flow**, **Read.ai** | `mcp` | verified | 2026-09-21 |
 | | | Zoom (an endpoint exists on the live pipeline; no inbound traffic observed) | `script`, unverified | — | — |
 | | | Microsoft Teams recordings | not yet connected | — | — |
-| 7 | Knowledge / files | **Dropbox** (source of truth), **Google Drive**, **Notion** (single-member workspace, no teamspaces) | `mcp` | verified | 2026-09-21 |
+| 7 | Knowledge / files | **Dropbox** (final and published only), **Google Drive** (working files and collaboration), **Notion** (single-member workspace, no teamspaces) | `mcp` | verified | 2026-09-21 |
 | | | **GitHub** (spec + plan docs) | `script` (`gh` CLI, account `web3sea`) | verified | 2026-09-21 |
 
 **Mechanism options:** `mcp` (MCP server), `script` (Python/Bash hitting an API, in `scripts/`), `export` (CSV/JSON dump pipeline), `key+ref` (`.env` key + `references/{tool}-api.md` guide), `server available, not authenticated` (the connector exists in this runtime but the account is not linked), `not yet connected`.
@@ -60,6 +60,7 @@ One safe read-only call per tool. Reuse these as the verification probe; none of
 
 ## Permissions and boundaries
 
+- **Dropbox is final, Google Drive is working.** Dropbox holds only the polished, publishable version of a document; Drive holds every working version and is where collaboration with clients and teammates happens. Meeting records are always Dropbox, being immutable source of truth. A transcript filed into Drive is a legacy path, not a valid destination.
 - **Default posture is read-only.** Reads need no approval. Anything that writes, sends, posts, schedules, spends or deletes needs Brad's say-so first, per interaction.
 - **Outbound content always shows a draft first** (`CLAUDE.md` § Voice): LinkedIn, client email, anything external, no exceptions.
 - **Credit-consuming calls** (Apollo enrichment in particular) get flagged with the estimated cost before running, never fired speculatively.
@@ -85,7 +86,7 @@ An `mcp` row means *a live session can reach it*. It says nothing about whether 
 | 4 Communication | Slack outbound webhook | Apollo |
 | 5 Tasks | **Jira** (the internal CLI repo ships a Jira client) | **Linear** |
 | 6 Meetings | **Fireflies, Granola and Read.ai** all deliver to the live transcript pipeline by signed webhook, verified from its request logs (Granola and Read.ai as recently as 2026-09-20, Fireflies 2026-09-16). It files to Dropbox and notifies Slack | Wispr Flow; Zoom has an endpoint but no observed traffic |
-| 7 Files | **Dropbox** is the live write destination for meeting transcripts (path-addressed, set by an env var). **Google Drive** (service account) and **GitHub** (`gh`, plus token auth) | Notion |
+| 7 Files | **Dropbox** is the live write destination for meeting transcripts (path-addressed, set by an env var), which is correct: records are final by definition. **Google Drive** (service account) and **GitHub** (`gh`, plus token auth) | Notion |
 
 **Two transcript pipelines exist, and only one is running.** The live one is a private fork that receives Fireflies, Granola and Read.ai webhooks and files to **Dropbox** by path. The original router, which files to **Google Drive** by folder ID and carries the domain-wide-delegation design, has received **zero** requests: its logs are empty. Treat Dropbox as the real destination for transcripts, and anything describing Drive folder IDs as the legacy design until the dormant service is retired or revived. Both run their own Postgres.
 
@@ -93,7 +94,7 @@ An `mcp` row means *a live session can reach it*. It says nothing about whether 
 
 - **Secrets live in 1Password**, referenced as `op://<vault>/<item>/<field>`. the internal CLI repo's env-setter pushes them into Vercel and GitHub secrets; the credential-sync skill reconciles `.env` against 1Password and Railway by fingerprint without printing values. Headless access uses the `op` service account, not a human login.
 - **Committed CLIs follow the internal CLI repo's pattern**: a script in `bin/`, symlinked by `install.sh`, prerequisite CLIs checked with a friendly exit 2, per-machine settings in a config file that is never committed.
-- **Unattended work runs on Railway**, the way the router service does: Dockerfile build, health check, pre-deploy migrations, restart policy, retry limits and Slack alerting on failure.
+- **Unattended work runs on Railway**, the way the live transcript pipeline does: Dockerfile build, health check, pre-deploy migrations, restart policy, retry limits and Slack alerting on failure.
 - **API research is already captured.** The router service's repo holds source-linked developer docs for the meeting sources under `resources/`. Check there before writing a `references/{tool}-api.md` page here, and link rather than duplicate.
 
 **One observation worth acting on.** Jira has committed tooling and Linear does not, which is backwards for a migration whose destination is Linear.
