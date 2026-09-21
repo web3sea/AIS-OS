@@ -92,3 +92,17 @@ Run `/audit` to see coverage and freshness.
 - When I make a decision, suggest logging it via the decisions log.
 - When you spot a manual task I'm doing 3+ times, surface it next time `/level-up` runs.
 - Default Shift: when I bring a new task, ask "to what extent could AI be leveraged here?" before assuming I'll do it the old way.
+
+## Working on the kit itself
+
+This repo has no build, lint or test step. It is markdown plus six skills. The only executable surface is the `3d-brain` skill's bundled template (`.claude/skills/3d-brain/assets/template`): `npm run build` (esbuild bundle + graph), `npm start` (local server), and the node helpers in that skill's `scripts/`.
+
+**Two assistants, one source.** `CLAUDE.md` and `AGENTS.md` are byte-identical by design. Change one, change both in the same commit. Likewise `.claude/skills/` is canonical and `.agents/skills/` is a Codex mirror: after creating or editing any skill, run `./scripts/sync-codex-skills.sh [skill...]`. The script copies forward and rewrites `.claude/skills` paths to `.agents/skills` in markdown only. It never deletes, so retiring a skill means moving the stale mirror copy to `archives/` by hand.
+
+**The personalization pipeline is generated, not hand-edited.** `aios-intake.md` is the source of truth. `/onboard` reads it and writes `context/*`, `references/voice.md`, `connections.md`, and the Knowledge base and Connections sections of both manuals. Editing those derived files directly works until the next `/onboard` run overwrites them. To change them durably, edit `aios-intake.md` and re-run. Originals are backed up to `archives/intake-{timestamp}/` first. Note the skill's timestamp is minute-resolution, so two runs inside one minute overwrite each other's backup.
+
+**Never delete, move to `archives/`.** This applies to retired skills, stale mirrors and superseded context.
+
+**`references/3ms-framework.md` is read-only.** It ships with the kit.
+
+**Known drift:** `scripts/sync-codex-skills.sh` cites `references/tool-agnostic-setup.md`, which does not exist in this clone.
