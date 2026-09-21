@@ -42,19 +42,5 @@ custom automation work.
 - Tracking: nothing consolidated today. Xero is planned for accounting, plus a
   custom app to track product growth against monthly goals and KPIs.
 
-## Custom automation engagements
-
-Two shapes, run concurrently rather than as alternatives:
-
-- **Retainers** - monthly, ongoing. Band roughly $2k to $5.6k per month.
-- **Projects** - fixed scope, fixed fee. Band roughly $1.6k to $8k. Entry
-  point is $1,500 for a basic automation.
-
-As of Sep 2026: 2 retainers and 5 active projects.
-
-Exact per-engagement amounts and client names are deliberately kept out of this
-repo, which is public. That detail lives in Dropbox under Products/AIOS.
-
-Still open: what pushes a deal toward retainer versus project, typical project
-duration, whether post-delivery maintenance is included or billed separately,
-and who signs.
+Open item: what a custom automation engagement looks like in practice (project
+versus retainer, price band) is not yet written down.

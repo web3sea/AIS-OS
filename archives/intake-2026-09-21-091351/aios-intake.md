@@ -33,17 +33,8 @@ AIOS CDP - shared infrastructure, not sold separately. The single connection
 layer the three products run on. Positioning line: "One connection, every
 product."
 
-Custom automation engagements run in two shapes, both active at once:
-
-- Retainers, monthly, ongoing.
-- Projects, fixed scope and fixed fee.
-
-As of Sep 2026: 2 retainers and 5 active projects running concurrently.
-Retainer band roughly $2k to $5.6k per month. Project band roughly $1.6k to
-$8k. Entry point is $1,500 for a basic automation.
-
-Exact per-engagement figures are deliberately not recorded here: this repo is
-public. Detail belongs in Dropbox under Products/AIOS.
+[Pending: what a custom automation engagement looks like in practice (project vs
+retainer, price band).]
 ```
 
 ---
@@ -116,11 +107,8 @@ Quarterly priorities. Not yearly aspirations. Things that, if not done by July, 
    Coffee is the wedge; adoption is expected to spill over into IQ and Signals.
 2. Stand up an agent team that reliably delivers the end-to-end product
    lifecycle workflow.
-   Definition of done: agents clear all nine stages without intervention -
-   intake, discovery, intent, plan, build, qa, uat, feedback, prod - while
-   documenting every task, updating the client in the client dashboard, and
-   with the "Rabbit" agent conversing with the client, returning feedback, and
-   fixing and deploying against it on demand.
+   [Pending: what "reliably" means in numbers - which lifecycle stages are in
+   scope, and the bar that counts as done.]
 ```
 
 ---
