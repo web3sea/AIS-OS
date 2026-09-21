@@ -29,6 +29,15 @@ Read `references/3ms-framework.md` once. It's how Brad Wilcox thinks about AI wo
 - `audits/` — dated audit reports and finding history; point-in-time evidence, not live business state
 - `archives/` — old stuff. Don't delete. Move here.
 
+**Active client work is not in this repo** (it is public; client detail stays out). To find a client's current state:
+
+1. **Who the client is** — the client registry repo in the agency GitHub org, `clients.yaml`. The canonical registry: client code, business identity, routing keys and Drive destinations. Start here to resolve which client is which.
+2. **Published documentation and deliverables** — Dropbox `/Agency/Client Docs`, one folder per business.
+3. **Meeting transcripts and client comms** — Google Drive `Client Docs/<Business>/`, subfolders `Meeting Transcripts` and `Client Comms`. Written automatically by the meeting-transcript router service; folder IDs are in `clients.yaml`.
+4. **Project code** — GitHub, the client-projects team in the agency org. That team is the authoritative grouping, not a naming convention across the org's repos. Local working copies are checked out per client under the usual code root.
+
+> **"Client Docs" is ambiguous: two folders of that name exist in two different systems.** Dropbox `/Agency/Client Docs` holds published documentation you wrote. Google Drive `Client Docs/` holds transcripts and comms a service files there. Always say which system you mean.
+
 See `EXPANSIONS.md` for what to add as you grow.
 
 ## Knowledge base
@@ -67,22 +76,29 @@ Match the register in `references/voice.md`. Casual but professional. Short sent
 
 ## Connections
 
-Everything below is known but **not yet wired**. Day 2 is when connections get
-built. Full registry in `connections.md`.
+**Twelve tools across all seven domains are reachable from this runtime**,
+verified by read-only calls on Sep 21, 2026. Don't ask Brad for something you
+can fetch. Bold below means verified; the rest are named but unwired. Full
+registry, access routes, freshness rules and permission boundaries in
+`connections.md` — check it before assuming a source is out of reach.
 
-- **Revenue:** Stripe (products), Wise (consulting invoices). Xero and a custom
-  KPI app planned.
-- **Customers:** Microsoft Teams, Slack, Gmail, WhatsApp.
-- **Calendar:** Google Calendar primary; one client Microsoft 365 / Outlook
-  calendar.
-- **Communication:** Slack internally; LinkedIn, cold email, X, podcast
-  outward.
-- **Work tracking:** migrating Jira to Linear. Prefer Linear.
-- **Meetings:** Granola, Fireflies, Wispr Flow, Read.ai, Teams recordings.
-- **Files:** Dropbox is source of truth; Google Drive for collaboration, Notion
-  for the team wiki, GitHub for spec and plan docs.
+- **Revenue:** **Stripe** (products). Wise and Upwork unwired; Xero and a custom
+  KPI app planned. Stripe is the only way to count Priority 1 once products ship.
+- **Customers:** **Gmail**, **Slack**. Microsoft Teams (one client tenant) and
+  WhatsApp unwired.
+- **Calendar:** **Google Calendar** primary. The client Microsoft 365 / Outlook
+  calendar is unwired.
+- **Communication:** **Slack** internally. Apollo configured but unverified;
+  LinkedIn, X and the podcast unwired.
+- **Work tracking:** **Linear** and **Jira** both reachable. Write to Linear;
+  read Jira only for what has not migrated.
+- **Meetings:** **Granola**, **Fireflies**, **Wispr Flow**, **Read.ai**. Teams
+  recordings unwired.
+- **Files:** **Dropbox** (source of truth), **Google Drive**, **Notion** (team
+  wiki), **GitHub** (via `gh` CLI, not MCP).
 
-Run `/audit` to see coverage and freshness.
+These live in the operator's runtime config, not in this repo: a fresh clone
+elsewhere has none of them. Run `/audit` to re-check coverage and freshness.
 
 ## How you work with me
 
@@ -100,6 +116,8 @@ This repo has no build, lint or test step. It is markdown plus six skills. The o
 **Two assistants, one source.** `CLAUDE.md` and `AGENTS.md` are byte-identical by design. Change one, change both in the same commit. Likewise `.claude/skills/` is canonical and `.agents/skills/` is a Codex mirror: after creating or editing any skill, run `./scripts/sync-codex-skills.sh [skill...]`. The script copies forward and rewrites `.claude/skills` paths to `.agents/skills` in markdown only. It never deletes, so retiring a skill means moving the stale mirror copy to `archives/` by hand.
 
 **The personalization pipeline is generated, not hand-edited.** `aios-intake.md` is the source of truth. `/onboard` reads it and writes `context/*`, `references/voice.md`, `connections.md`, and the Knowledge base and Connections sections of both manuals. Editing those derived files directly works until the next `/onboard` run overwrites them. To change them durably, edit `aios-intake.md` and re-run. Originals are backed up to `archives/intake-{timestamp}/` first. Note the skill's timestamp is minute-resolution, so two runs inside one minute overwrite each other's backup.
+
+**Exception: connection status is hand-owned.** `/onboard` only *seeds* `connections.md`, resetting all seven rows to "not yet connected" (`.claude/skills/onboard/SKILL.md` steps 5 and 15). Verified mechanisms, auth status, Last checked dates, access routes and permission boundaries are maintained by hand and will be destroyed by a re-run. Before re-running `/onboard`, copy the current `connections.md` aside, and merge the verified rows back afterwards.
 
 **Never delete, move to `archives/`.** This applies to retired skills, stale mirrors and superseded context.
 
