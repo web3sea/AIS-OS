@@ -40,13 +40,10 @@ Two revenue lines:
 
 - **Three products for solo founders.** AIOS Coffee (daily briefing and meeting
   prep, the wedge product), AIOS Signals (self-serve relationship intelligence),
-  AIOS IQ (the knowledge base under both: confirm what is true once, and
-  Coffee, Signals and the agents all work from it).
+  AIOS IQ (a living, cited record of every client and lead, AI-drafted from
+  your email, docs and meetings, confirmed or corrected by you).
 - **Custom automation solutions** for companies implementing AI: lead generation
   pipelines, content automation, CRM integration, operational AI.
-
-All three products run on **AIOS CDP**, the shared connection layer. It is
-infrastructure, not a fourth product, and it is not sold separately.
 
 This quarter, to Dec 20, 2026:
 

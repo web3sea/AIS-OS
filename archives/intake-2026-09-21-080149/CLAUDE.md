@@ -45,9 +45,6 @@ Two revenue lines:
 - **Custom automation solutions** for companies implementing AI: lead generation
   pipelines, content automation, CRM integration, operational AI.
 
-All three products run on **AIOS CDP**, the shared connection layer. It is
-infrastructure, not a fourth product, and it is not sold separately.
-
 This quarter, to Dec 20, 2026:
 
 1. Launch all three products, 30 paying AIOS Coffee users by Dec 20.

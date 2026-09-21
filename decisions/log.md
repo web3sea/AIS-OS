@@ -45,3 +45,21 @@ Keep it terse. Future-you will thank present-you for capturing the *why*, not ju
 **Decision:** Adapt Herk-2's grill-me skill for the student kit and ship matching Claude/Codex packages. Save every answer to brainstorms/, preserve resumable Q&A history, and update canonical context only with confirmed facts during requested context-building sessions.
 
 **Why:** Onboarding is an initial snapshot. Ongoing interviews capture changing priorities, decisions, and preferences while keeping tentative ideas distinct from current business facts.
+
+## 2026-09-21 - AIOS IQ is the knowledge layer, not a retrieval tool
+
+**Decision:** IQ is the knowledge base behind every client and lead, where you confirm what is true once and Coffee, Signals and the agents all stop getting it wrong. AI drafts each record from email, documents and meetings; the user confirms or corrects it as it grows. Positioning line unchanged: "The memory your AI actually trusts."
+
+**Why:** The first framing was stateless retrieval (ask a question, get a cited answer). That made IQ a fourth thing to buy and left the product line unexplained. The leverage framing makes IQ the foundation the other two products read from, which is also what justifies Coffee as the wedge: daily Coffee use produces the confirmed record that IQ sells. Build-order consequence: Coffee and Signals must read from IQ rather than re-deriving from raw email, otherwise "confirm once" is false.
+
+**Alternatives considered:** Three variants were on the table. The working-file angle (one document per client that never goes stale) was most concrete about the artifact but weakest on why you would want it, and "never goes stale" is a claim every CRM makes. The dependency angle (every client and lead your business depends on gets a working file) was the tightest sentence but described IQ alone, leaving the family unexplained. The original retrieval framing was dropped for the reasons above.
+
+## 2026-09-21 - AIOS CDP is infrastructure, not a fourth product
+
+**Decision:** AIOS CDP is the shared connection layer all three products run on. It is not sold separately and does not appear as a fourth product. Line: "One connection, every product." The product line stays at three: Coffee, Signals, IQ.
+
+**Why:** CDP surfaced in a nav-bar and pricing-table list alongside the three products, which implied it was sold. Naming it as infrastructure keeps the pricing story simple and the Dec 20 target unchanged. It also makes the stack legible: CDP connects once, IQ turns what flows in into confirmed records, Coffee and Signals are the surfaces. Each layer's promise depends on the one below it, "one connection" is what makes "confirm it once" possible.
+
+**Consequence:** CDP is now a hard dependency of all three launches, not a parallel workstream. If it slips, all three slip together. The riskiest part is normalizing five overlapping meeting sources (Granola, Fireflies, Wispr Flow, Read.ai, Teams recordings) into one, which is a reason to consolidate that domain before building against it.
+
+**Alternatives considered:** Selling CDP as a fourth product, which would have changed the shape of the quarter's launch target. Leaving it undecided, which would have left the three-product framing quietly contradicted by the pricing table.

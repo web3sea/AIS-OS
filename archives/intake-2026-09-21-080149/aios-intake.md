@@ -29,10 +29,6 @@ Products: AIOS Coffee, AIOS Signals, AIOS IQ.
   from your emails, documents and meetings; confirmed or corrected by you as it
   grows. Positioning line: "Confirm it once, everywhere gets it right."
 
-AIOS CDP - shared infrastructure, not sold separately. The single connection
-layer the three products run on. Positioning line: "One connection, every
-product."
-
 [Pending: what a custom automation engagement looks like in practice (project vs
 retainer, price band).]
 ```

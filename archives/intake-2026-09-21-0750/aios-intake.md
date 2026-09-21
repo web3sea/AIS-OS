@@ -24,14 +24,8 @@ Products: AIOS Coffee, AIOS Signals, AIOS IQ.
 - Coffee - your daily briefing and meeting prep: what is on today, what you need
   to know before each meeting, and a draft reply ready to send. Positioning
   line: "Walk into every meeting prepared."
-- IQ - the knowledge base behind every client and lead: confirm what is true
-  once, and Coffee, Signals and your agents all work from it. Drafted by the AI
-  from your emails, documents and meetings; confirmed or corrected by you as it
-  grows. Positioning line: "Confirm it once, everywhere gets it right."
-
-AIOS CDP - shared infrastructure, not sold separately. The single connection
-layer the three products run on. Positioning line: "One connection, every
-product."
+- IQ - positioning line: "The memory your AI actually trusts." [Pending: full
+  one-line description.]
 
 [Pending: what a custom automation engagement looks like in practice (project vs
 retainer, price band).]
