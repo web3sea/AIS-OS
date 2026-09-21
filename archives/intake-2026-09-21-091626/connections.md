@@ -6,7 +6,7 @@ Populated Sep 21, 2026. Every row is "not yet connected" by design: Day 1 record
 
 | # | Domain | Tool | Mechanism | Auth | Last checked |
 |---|---|---|---|---|---|
-| 1 | Revenue / Financials | Stripe (products + some retainers), Wise (project milestones + some retainers), Upwork (some retainers); Xero planned | not yet connected | — | — |
+| 1 | Revenue / Financials | Stripe (products), Wise (consulting invoices); Xero planned | not yet connected | — | — |
 | 2 | Customer interactions | Microsoft Teams, Slack, Gmail, WhatsApp | not yet connected | — | — |
 | 3 | Calendar | Google Calendar (primary); Microsoft 365 / Outlook calendar (one client tenant) | not yet connected | — | — |
 | 4 | Communication | Slack (team); LinkedIn, cold email, X, podcast (outside world) | not yet connected | — | — |
@@ -22,4 +22,4 @@ When you wire a new tool, also save `references/{tool}-api.md` capturing endpoin
 
 - Domain 6 runs five tools on purpose (Granola, Fireflies, Wispr Flow, Read.ai, Teams recordings). This is not sprawl: users arrive on whichever meeting tool they already use, so AIOS CDP has to connect to all of them. Brad runs all five in his own meetings as the test harness for the connector matrix. Do not consolidate.
 - Domain 5 is mid-migration. Wire Linear, not Jira, unless the Jira board is still where the work actually is.
-- Domain 1 has no tracking layer yet and three separate billing rails (Stripe, Wise, Upwork) with no single view. Xero and the custom KPI app are planned, not live.
+- Domain 1 has no tracking layer yet. Xero and the custom KPI app are planned, not live.

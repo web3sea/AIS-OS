@@ -44,10 +44,6 @@ $8k. Entry point is $1,500 for a basic automation.
 
 Duration depends on scope: minimum 2 weeks, average 8 weeks.
 
-MVP is included, with 30 days free maintenance after delivery.
-The founder signs.
-Projects are invoiced by milestone. Retainers bill via Upwork, Stripe or Wise.
-
 Exact per-engagement figures are deliberately not recorded here: this repo is
 public. Detail belongs in Dropbox under Products/AIOS.
 ```
@@ -138,9 +134,8 @@ Multiple answers OK. Stripe? Skool? GoHighLevel? QuickBooks? A spreadsheet?
 ```
 Today:
 - Product revenue: Stripe (rail decided; products not yet launched).
-- Project revenue: invoiced by milestone, lands in Wise.
-- Retainer revenue: billed via Upwork, Stripe or Wise depending on the client.
-- Tracking: nothing consolidated yet. Three rails and no single view.
+- Consulting / custom automation revenue: invoices land in Wise bank.
+- Tracking: nothing consolidated yet.
 
 Planned:
 - Xero for accounting (needs to be set up).

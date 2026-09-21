@@ -56,12 +56,5 @@ As of Sep 2026: 2 retainers and 5 active projects.
 Exact per-engagement amounts and client names are deliberately kept out of this
 repo, which is public. That detail lives in Dropbox under Products/AIOS.
 
-**Delivery and terms**
-
-- MVP is included in a project, with 30 days free maintenance after delivery.
-- The founder signs. Proposals should be written for a founder, not a
-  committee.
-- Projects are invoiced by milestone. Retainers bill through Upwork, Stripe or
-  Wise, depending on the client.
-
-Still open: what pushes a deal toward retainer versus project.
+Still open: what pushes a deal toward retainer versus project, whether
+post-delivery maintenance is included or billed separately, and who signs.
