@@ -20,6 +20,6 @@ When you wire a new tool, also save `references/{tool}-api.md` capturing endpoin
 
 ## Notes for Day 2
 
-- Domain 6 runs five tools on purpose (Granola, Fireflies, Wispr Flow, Read.ai, Teams recordings). This is not sprawl: users arrive on whichever meeting tool they already use, so AIOS CDP has to connect to all of them. Brad runs all five in his own meetings as the test harness for the connector matrix. Do not consolidate.
+- Domain 6 has four tools doing one job (Granola, Fireflies, Wispr Flow, Read.ai). Consolidating is a `/level-up` candidate before wiring all four.
 - Domain 5 is mid-migration. Wire Linear, not Jira, unless the Jira board is still where the work actually is.
 - Domain 1 has no tracking layer yet. Xero and the custom KPI app are planned, not live.
