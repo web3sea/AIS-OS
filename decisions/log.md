@@ -105,3 +105,15 @@ Keep it terse. Future-you will thank present-you for capturing the *why*, not ju
 **Why:** The 2026-09-22 audit (run 3) flagged this as the one remaining unresolved conflict between the two files, since `priorities.md` had always said Teams was out of scope but `connections.md` still framed it as an open question "worth settling." It's the same shape of decision already made about the client M365 tenant: don't offer to wire it, don't treat it as a pending task.
 
 **Alternatives considered:** Leaving it open pending a future release-scoping conversation — rejected because "worth settling" had already sat unresolved across two prior audits with no new information arriving in between; there was nothing left to wait for.
+
+## 2026-09-22 — `/level-up`: shipped `find-stakeholder`, a multi-tool email lookup skill
+
+**Decision:** Scoped and shipped `.claude/skills/find-stakeholder/` (mirrored to `.agents/skills/`). Mindset: adding/verifying a client stakeholder's email meant manually querying Granola, Fireflies, and Wispr Flow one at a time (happened twice this session — Tom, then Shivam — each taking 4-5 tool calls). Method: not eliminable (real data-quality need); automated at L2 (Drafted) — the skill searches all connected meeting-intelligence tools and drafts a candidate entry with evidence, but never writes to a registry itself, matching how today's actual additions went (search, then explicit human confirm). Machine: shipped as an AI-assisted `SKILL.md` (not a deterministic script — cross-source reconciliation needs judgment; not an agent — no multi-step autonomy needed), `bike-method-phase: 1`. KPI: Less cost — target is one invocation instead of 4-5 manual tool calls per lookup. **Core design point:** the skill records every distinct email found for a person rather than picking one, since real stakeholders (like Winston, added earlier this session) legitimately hold more than one address.
+
+**Verified:** ran it live against Tom Sweeney and it independently reproduced the exact address already on file in `clients.yaml` (`tom.sweeney@roofingprojects.com`, calendar-sourced), with explicit "nothing found" on the two sources that had no match, rather than silently omitting them.
+
+**Why:** The standing `/level-up` candidate (the agent merge workflow) is already an active, staffed org epic (Linear AAA-728) — scoping a parallel automation there would duplicate work, so Brad redirected to a different real pain point from the same session.
+
+**Alternatives considered:** Folding the protocol into `/grill-me` instead of a standalone skill — rejected so the lookup is usable any time a stakeholder email is needed, not only mid-interview. Candidate #2 (schema-change sync drift — a new enum value needing updates in 3 places, one bot review had to catch 2 of 3 misses) and candidate #3 (the 2026-09-22 `/grill-me` brainstorm's "Open flags" going stale with no automatic check-off) were both surfaced in the same Mindset pass but deferred to a future `/level-up` run rather than diluting this one.
+
+**Owner:** Brad.
