@@ -22,7 +22,7 @@ Seeded Sep 21, 2026. **Verified by live read-only calls Sep 21, 2026.** Twelve t
 | 5 | Project / task tracking | **Linear** (destination), **Jira / Atlassian** (legacy) | `mcp` | verified | 2026-09-21 |
 | 6 | Meeting intelligence | **Granola**, **Fireflies**, **Wispr Flow**, **Read.ai** | `mcp` | verified | 2026-09-21 |
 | | | Zoom (an endpoint exists on the live pipeline; no inbound traffic observed) | `script`, unverified | — | — |
-| | | Microsoft Teams recordings | not yet connected | — | — |
+| | | Microsoft Teams recordings | **out of scope for this release** (see Permissions) | — | — |
 | 7 | Knowledge / files | **Dropbox** (final and published only), **Google Drive** (working files and collaboration), **Notion** (single-member workspace, no teamspaces) | `mcp` | verified | 2026-09-21 |
 | | | **GitHub** (spec + plan docs) | `script` (`gh` CLI, account `web3sea`) | verified | 2026-09-21 |
 
@@ -69,7 +69,7 @@ One safe read-only call per tool. Reuse these as the verification probe; none of
 
 ## Notes for Day 2
 
-- Domain 6 runs four verified tools on purpose (Granola, Fireflies, Wispr Flow, Read.ai). This is not sprawl: users arrive on whichever meeting tool they already use, so AIOS CDP has to connect to all of them. Brad runs them in his own meetings as the test harness for the connector matrix. Do not consolidate. **Teams recordings remain unwired, and `context/priorities.md` puts Teams out of scope for this release** — worth settling in one place, since the manuals still list it.
+- Domain 6 runs four verified tools on purpose (Granola, Fireflies, Wispr Flow, Read.ai). This is not sprawl: users arrive on whichever meeting tool they already use, so AIOS CDP has to connect to all of them. Brad runs them in his own meetings as the test harness for the connector matrix. Do not consolidate. **Teams recordings are confirmed out of scope for this release** (decided 2026-09-22, matching `context/priorities.md`), consistent with the client M365 tenant staying disconnected above. Not a pending task; do not offer to wire it before the next release scoping.
 - Domain 5 is mid-migration and **both ends are now reachable**, so the AIOS can compare them. Wire work *into* Linear; read Jira only to see what has not moved yet.
 - Domain 1 still has no tracking layer and three billing rails (Stripe, Wise, Upwork) with no single view. Only Stripe is reachable. Xero and the custom KPI app are planned, not live. The Priority 1 user count comes from the product side's Stripe connection, not from anything this AIOS needs to build.
 - The gap that remains is not access, it is durability: the `mcp` rows above live in one operator's runtime config and exist only while a session is open. See **Durable paths** below for what already survives without one.

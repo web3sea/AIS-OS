@@ -6,6 +6,10 @@ Quarter running to Dec 20, 2026. Set Sep 21, 2026.
    2026. Coffee is the wedge; adoption is expected to spill over into IQ and
    Signals.
 
+   Measured via product-side Stripe (see `connections.md` domain 1). This
+   AIOS does not build its own Stripe plumbing; the product side already
+   owns the count.
+
    Dependency: CDP ships first or all three slip together. CDP is the data
    connector layer, IQ sits on CDP, and Coffee and Signals read from IQ, so
    everything is downstream of connectors landing. CDP has to support many

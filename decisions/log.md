@@ -89,3 +89,19 @@ Keep it terse. Future-you will thank present-you for capturing the *why*, not ju
 **Why:** The first audit flagged Stripe as the only path to measuring Priority 1 and recorded having no committed script for it as a gap. That was the wrong frame. Product revenue plumbing is product work with its own paying users and its own connections; duplicating a read path here would be a second source of truth for a number the products already own. Recording it as "not a gap" rather than deleting the row means a later audit will not rediscover it and file the same finding again. What would change this: the agency needing a revenue view that spans Stripe, Wise and Upwork, which is a different problem from counting product users and is still unsolved.
 
 **Alternatives considered:** Building a committed Stripe read in the internal CLI pattern, which solves a problem nobody has until products launch. Leaving the gap on the books, which would have kept generating the same audit finding every run.
+
+## 2026-09-22 — Weekly scheduled `/audit` run as a cloud routine
+
+**Decision:** Created a cloud routine (`AIS-OS Weekly Audit`, id `trig_013izD2c4YPcYacrAwt5mCeN`) that runs Fridays 5pm Asia/Makassar against `web3sea/AIS-OS`. It reads and follows `.claude/skills/audit/SKILL.md` directly, saves a dated report under `audits/`, and always opens a PR against `main` with the report as the durable run record — even when nothing changed that week. It never merges its own PR.
+
+**Why:** Run 2 of the 2026-09-21 audit found the score exactly capped at 49/100 by Cadence (2/25): "any C below 10 caps the total at 49... every further point of documentation work is now worth nothing." Run 3 (2026-09-22) confirmed this held even after two real repairs — raw rose to 55, final stayed 49. Cadence was the only lever left, and it required an actual unattended trigger, not more documentation. A PR-per-run (rather than a silent commit to main) keeps a human checkpoint on an automated repo write while still producing durable, inspectable run evidence for D1/D2.
+
+**Alternatives considered:** Committing straight to `main` with no review step — faster, but removes the one human checkpoint on writes an automated routine makes to the repo. A local cron job instead of a cloud routine — rejected because it depends on a laptop being on, which the audit rubric explicitly does not count as reliable unattended execution.
+
+## 2026-09-22 — Microsoft Teams meeting recordings, confirmed out of scope
+
+**Decision:** Teams meeting-recording connectivity is confirmed out of scope for this release, not merely an unaddressed row. `connections.md` and `context/priorities.md` now agree explicitly, and the Teams recordings row in `connections.md` reads "out of scope for this release" instead of "not yet connected."
+
+**Why:** The 2026-09-22 audit (run 3) flagged this as the one remaining unresolved conflict between the two files, since `priorities.md` had always said Teams was out of scope but `connections.md` still framed it as an open question "worth settling." It's the same shape of decision already made about the client M365 tenant: don't offer to wire it, don't treat it as a pending task.
+
+**Alternatives considered:** Leaving it open pending a future release-scoping conversation — rejected because "worth settling" had already sat unresolved across two prior audits with no new information arriving in between; there was nothing left to wait for.
