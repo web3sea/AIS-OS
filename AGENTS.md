@@ -18,6 +18,7 @@ Read `references/3ms-framework.md` once. It's how Brad Wilcox thinks about AI wo
 - `/link`: Link a project, file, folder, or source into the right operating-manual route or index.
 - `/3d-brain`: Choose a brain name and categories, then build a local 3D knowledge globe with Cinema and interactive growth replay. Uses selected local files and the bundled app template.
 - `/level-up` — Weekly 3Ms interview. Find one automation, scope it, ship it. One per week.
+- `/find-stakeholder`: Find every known email for a named person in one pass, searching all connected meeting-intelligence tools (Granola, Fireflies, Wispr Flow, Read.ai) instead of one at a time. Drafts a candidate entry with evidence; never writes to a registry itself.
 
 ## Where things live
 
