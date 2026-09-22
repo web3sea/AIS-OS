@@ -129,4 +129,4 @@ This repo has no build, lint or test step. It is markdown plus six skills. The o
 
 **`references/3ms-framework.md` is read-only.** It ships with the kit.
 
-**Known drift:** `scripts/sync-codex-skills.sh` cites `references/tool-agnostic-setup.md`, which does not exist in this clone.
+**Checking mirror drift without writing:** `scripts/sync-codex-skills.sh --check` reports whether `.agents/skills` matches canonical `.claude/skills` (including orphans) and exits non-zero on drift, without copying anything.
